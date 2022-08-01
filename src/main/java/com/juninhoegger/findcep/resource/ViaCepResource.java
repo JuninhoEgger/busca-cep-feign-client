@@ -5,7 +5,6 @@ import com.juninhoegger.findcep.entity.Endereco;
 import com.juninhoegger.findcep.service.ViaCepService;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
@@ -18,8 +17,11 @@ import static org.springframework.http.ResponseEntity.ok;
 @Api(tags = {"Address"})
 public class ViaCepResource implements ViaCepApi {
 
-    @Autowired
-    private ViaCepService viaCepService;
+    private final ViaCepService viaCepService;
+
+    public ViaCepResource(ViaCepService viaCepService) {
+        this.viaCepService = viaCepService;
+    }
 
     @Override
     public ResponseEntity<Endereco> findByCep(String cep, HttpServletRequest request) {
