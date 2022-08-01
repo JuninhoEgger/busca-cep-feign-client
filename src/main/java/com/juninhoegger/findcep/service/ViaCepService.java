@@ -15,11 +15,11 @@ public class ViaCepService {
     }
 
     public Endereco findByCep(String cep) {
-        try {
-            return viaCepFeignClient.findByCep(cep);
-        } catch (RuntimeException e) {
-            throw new NotFoundException(e.getMessage());
+        Endereco endereco = viaCepFeignClient.findByCep(cep);
+        if (endereco != null) {
+            return endereco;
         }
+        throw new NotFoundException("CEP " + cep + " NOT FOUND");
     }
 
 }
