@@ -8,7 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 @ExtendWith(MockitoExtension.class)
 class ViaCepServiceTest {
@@ -25,7 +25,7 @@ class ViaCepServiceTest {
         //WHEN
         Endereco endereco = viaCepService.findByCep(cep);
         //THEN
-        assertNotNull(endereco);
+        assertDoesNotThrow(() -> viaCepService.findByCep(cep));
     }
 
 }
