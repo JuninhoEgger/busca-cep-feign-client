@@ -1,6 +1,5 @@
-package com.juninhoegger.findcep.entitytest;
+package com.juninhoegger.findcep.entity;
 
-import com.juninhoegger.findcep.entity.Endereco;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
