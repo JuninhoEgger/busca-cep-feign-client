@@ -37,10 +37,7 @@ class ResourceExceptionHandlerTest {
 
     private HttpServletRequest mockServletRequest() {
         HttpServletRequest request = mock(HttpServletRequest.class);
-
         given(request.getRequestURI()).willReturn("request-uri");
-
         return request;
     }
-
 }
