@@ -13,11 +13,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @ExtendWith(MockitoExtension.class)
 class ViaCepServiceTest {
 
-    @Mock
-    private ViaCepFeignClient viaCepFeignClient;
     @InjectMocks
     private ViaCepService viaCepService;
-
+    @Mock
+    private ViaCepFeignClient viaCepFeignClient;
 
     @Test
     void shouldReturnAddressWithCep() {
