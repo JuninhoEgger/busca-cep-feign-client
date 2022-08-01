@@ -1,6 +1,7 @@
 package com.juninhoegger.findcep.service;
 
 import com.juninhoegger.findcep.entity.Endereco;
+import com.juninhoegger.findcep.exception.NotFoundException;
 import com.juninhoegger.findcep.feign.ViaCepFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,11 @@ public class ViaCepService {
     private ViaCepFeignClient viaCepFeignClient;
 
     public Endereco findByCep(String cep) {
-        return viaCepFeignClient.findByCep(cep);
+        try {
+            return viaCepFeignClient.findByCep(cep);
+        } catch (RuntimeException e) {
+            throw new NotFoundException(e.getMessage());
+        }
     }
 
 }
