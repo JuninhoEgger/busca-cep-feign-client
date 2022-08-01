@@ -16,10 +16,10 @@ public class ViaCepService {
 
     public Endereco findByCep(String cep) {
         Endereco endereco = viaCepFeignClient.findByCep(cep);
-        if (endereco != null) {
-            return endereco;
+        if (endereco == null) {
+            throw new NotFoundException("CEP " + cep + " NOT FOUND");
         }
-        throw new NotFoundException("CEP " + cep + " NOT FOUND");
+        return endereco;
     }
 
 }
