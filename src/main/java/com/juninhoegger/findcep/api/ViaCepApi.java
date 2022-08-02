@@ -1,10 +1,7 @@
 package com.juninhoegger.findcep.api;
 
 import com.juninhoegger.findcep.entity.Endereco;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,5 +23,7 @@ public interface ViaCepApi {
     )
     @ApiResponses(value = {@ApiResponse(code = 200, message = "OK", response = Endereco.class)})
     @GetMapping(value = "findbycep/{cep}", produces = APPLICATION_JSON_VALUE)
-    ResponseEntity<Endereco> findByCep(@PathVariable("cep") String cep, HttpServletRequest request);
+    ResponseEntity<Endereco> findByCep(
+            @ApiParam(value = "O cep do endereço", required = true)
+            @PathVariable("cep") String cep, HttpServletRequest request);
 }
