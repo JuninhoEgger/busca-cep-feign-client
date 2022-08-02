@@ -31,7 +31,6 @@ class ViaCepServiceTest {
         Endereco actual = viaCepService.findByCep(cep);
 
         //THEN
-        assertNotNull(actual);
         assertEquals("Rua Cambará do Sul", actual.getLogradouro());
     }
 
