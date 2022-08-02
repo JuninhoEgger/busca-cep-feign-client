@@ -9,7 +9,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class ViaCepServiceTest {
@@ -19,19 +20,19 @@ class ViaCepServiceTest {
     @Mock
     private ViaCepFeignClient viaCepFeignClient;
 
-    //TODO
-//    @Test
-//    void shouldReturnAddressWithCep() {
-//        //GIVEN
-//        String cep = "94030210";
-//        Endereco endereco = mockEndereco();
-//
-//        //WHEN
-//        willReturn(endereco).given(viaCepService.findByCep(cep));
-//
-//        //THEN
-//        assertNotNull(endereco);
-//    }
+    @Test
+    void shouldReturnAddressWithCep() {
+        //GIVEN
+        String cep = "94030210";
+        Endereco endereco = mockEndereco();
+
+        //WHEN
+        when(viaCepFeignClient.findByCep(cep)).thenReturn(endereco);
+        Endereco actual = viaCepService.findByCep(cep);
+
+        //THEN
+        assertEquals("Rua Cambará do Sul", actual.getLogradouro());
+    }
 
     @Test
     void shouldThrowsExceptionWhenCepIsInvalid() {

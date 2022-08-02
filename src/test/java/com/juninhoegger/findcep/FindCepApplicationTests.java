@@ -13,4 +13,10 @@ class FindCepApplicationTests {
         assertTrue(true);
     }
 
+    @Test
+    void shouldTestMain() {
+        FindCepApplication.main(new String[]{});
+        assertTrue(true);
+    }
+
 }
